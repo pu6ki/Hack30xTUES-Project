@@ -18,6 +18,7 @@ class SubmissionsController < ApplicationController
 
   def create
     @submission = @contest.submissions.new submission_params
+    @submission.contestant = current_user.userable
 
     if @submission.save
       respond_to do |format|
@@ -51,7 +52,7 @@ class SubmissionsController < ApplicationController
 
   def destroy
     @submission.destroy
-    redirect_to submissions_path
+    redirect_to contest_submissions_path
   end
 
   private
@@ -61,7 +62,16 @@ class SubmissionsController < ApplicationController
   end
 
   def validate_contestant_user
-    redirect_to submissions_path unless current_user.contestant?
+    unless current_user.contestant?
+      respond_to do |format|
+        format.html { redirect_to contest_submissions_path }
+        format.json do
+          render json: {
+            errors: 'You should be a contestant in order to access this page'
+          }
+        end
+      end
+    end
   end
 
   def set_contest

@@ -61,7 +61,16 @@ class ContestsController < ApplicationController
   end
 
   def validate_recruiter_user
-    redirect_to contests_path unless current_user.recruiter?
+    unless current_user.recruiter?
+      respond_to do |format|
+        format.html { redirect_to contests_path }
+        format.json do
+          render json: {
+            errors: 'You should be a recruiter in order to access this page'
+          }
+        end
+      end
+    end
   end
 
   def set_contests
