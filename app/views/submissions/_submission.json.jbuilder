@@ -1,0 +1,4 @@
+json.contest submission.contest
+json.contestant submission.contestant
+json.source submission.source
+json.created_at submission.created_at
