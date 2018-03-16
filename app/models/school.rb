@@ -8,4 +8,8 @@ class School < ApplicationRecord
   validates_format_of :website, with: URL_VALIDATION_REGEX, multiline: true, allow_blank: true
 
   has_and_belongs_to_many :contestants
+
+  def to_s
+    "#{user} [#{name}]"
+  end
 end
