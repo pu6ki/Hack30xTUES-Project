@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316090104) do
+ActiveRecord::Schema.define(version: 20180316090609) do
 
   create_table "contestants", force: :cascade do |t|
     t.string "first_name"
@@ -21,10 +21,25 @@ ActiveRecord::Schema.define(version: 20180316090104) do
     t.index ["school_id"], name: "index_contestants_on_school_id"
   end
 
+  create_table "recruiters", force: :cascade do |t|
+    t.string "company_name"
+    t.string "website"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.string "website"
     t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.integer "hackerrank_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,10 +55,14 @@ ActiveRecord::Schema.define(version: 20180316090104) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "userable_id"
+    t.string "userable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
   end
 
 end
