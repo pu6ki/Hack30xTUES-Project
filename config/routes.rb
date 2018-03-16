@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :contests do
     resources :submissions
   end
+
+  root to: 'contests#index'
 end
