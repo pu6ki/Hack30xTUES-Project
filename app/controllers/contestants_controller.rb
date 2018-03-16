@@ -1,5 +1,5 @@
 class ContestantsController < ApplicationController
-  # TODO: authecnticate_user!
+  acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
   before_action :set_school, only: [:create, :edit, :update, :destory]
   before_action :set_contestant, only: [:edit, :update, :show, :destory]
 
