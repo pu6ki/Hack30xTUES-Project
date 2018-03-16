@@ -17,11 +17,15 @@ class ContestantsController < ApplicationController
     @contestant = Contestant.new contestant_object
     if @contestant.save
       respond_to do |format|
-        format.json { render @contestant }
+        format.json { render @contestant, status: :created }
         format.html { redirect_to @contestant }
       end
     else
       puts @contestant.errors.full_messages
+      respond_to do |format|
+        format.json { render json: @contestant.errors, status: :unprocessable_entity }
+        format.html { render :new }
+      end
     end
   end
 
