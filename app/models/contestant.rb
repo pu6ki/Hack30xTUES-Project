@@ -4,7 +4,16 @@ class Contestant < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :school, presence: true
 
-  belongs_to :school
+  has_and_belongs_to_many :schools
+
+  has_many :submissions
+
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+  def to_s
+    "#{user} [#{full_name}]"
+  end
 end

@@ -10,15 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316141618) do
+ActiveRecord::Schema.define(version: 20180316170853) do
 
   create_table "contestants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_contestants_on_school_id"
+  end
+
+  create_table "contestants_schools", id: false, force: :cascade do |t|
+    t.integer "contestant_id", null: false
+    t.integer "school_id", null: false
+    t.index ["contestant_id", "school_id"], name: "index_contestants_schools_on_contestant_id_and_school_id"
+  end
+
+  create_table "contests", force: :cascade do |t|
+    t.string "title"
+    t.string "position"
+    t.text "description"
+    t.integer "recruiter_id"
+    t.integer "technology_id"
+    t.datetime "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruiter_id"], name: "index_contests_on_recruiter_id"
+    t.index ["technology_id"], name: "index_contests_on_technology_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
@@ -38,9 +55,20 @@ ActiveRecord::Schema.define(version: 20180316141618) do
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.string "website"
-    t.integer "points"
+    t.integer "points", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.text "source"
+    t.integer "points"
+    t.integer "contestant_id"
+    t.integer "contest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_submissions_on_contest_id"
+    t.index ["contestant_id"], name: "index_submissions_on_contestant_id"
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -48,6 +76,14 @@ ActiveRecord::Schema.define(version: 20180316141618) do
     t.integer "hackerrank_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "test_cases", force: :cascade do |t|
+    t.string "expected_output"
+    t.integer "contest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_test_cases_on_contest_id"
   end
 
   create_table "users", force: :cascade do |t|

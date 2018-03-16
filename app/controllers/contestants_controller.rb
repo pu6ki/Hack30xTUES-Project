@@ -1,6 +1,5 @@
 class ContestantsController < ApplicationController
   # acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
-  # before_action :set_school, only: [:create, :edit, :update, :destory]
   before_action :set_contestant, only: [:edit, :update, :show, :destory]
 
   def index
@@ -26,7 +25,6 @@ class ContestantsController < ApplicationController
         format.html { redirect_to @contestant }
       end
     else
-      puts @contestant.errors.full_messages
       respond_to do |format|
         format.json { render json: @contestant.errors, status: :unprocessable_entity }
         format.html { render :new }
