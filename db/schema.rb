@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316141618) do
+ActiveRecord::Schema.define(version: 20180316160813) do
 
   create_table "contestants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_contestants_on_school_id"
+  end
+
+  create_table "contestants_schools", id: false, force: :cascade do |t|
+    t.integer "contestant_id", null: false
+    t.integer "school_id", null: false
+    t.index ["contestant_id", "school_id"], name: "index_contestants_schools_on_contestant_id_and_school_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
@@ -38,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180316141618) do
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.string "website"
-    t.integer "points"
+    t.integer "points", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
