@@ -3,9 +3,7 @@ json.website recruiter.website
 json.company_name recruiter.company_name
 
 json.user do
-  json.id recruiter.user.id
-  json.username recruiter.user.username
-  json.email recruiter.user.email
+  json.partial! 'devise/shared/user', user: recruiter.user
 end
 
 json.technologies recruiter.technologies do |tech|

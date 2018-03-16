@@ -1,5 +1,5 @@
 class RecruitersController < ApplicationController
-  # before_action :authenticate_user!, only: [:index, :show]
+  acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
   before_action :set_recruiter, only: [:show, :edit, :update]
 
   def index
@@ -52,6 +52,7 @@ class RecruitersController < ApplicationController
 
   def set_recruiter
     @recruiter = Recruiter.find_by id: params[:id]
+    puts "#TOKEN: #{@recruiter.user.authentication_token}"
   end
 
   def recruiter_params
