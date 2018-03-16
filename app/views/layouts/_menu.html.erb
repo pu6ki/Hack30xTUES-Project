@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg" id="navbar">
+  <a class="navbar-brand" href="/">
+    Interno
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav align-items-center">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Contests', contests_path, class: 'nav-link' %>
+        </li>
+        <div class="nav-item">
+          <%= link_to 'Schools', schools_path, class: 'nav-link' %>
+        </div>
+      <% end %>
+    </ul>
+    <ul class="navbar-nav ml-auto align-items-center">
+      <% if user_signed_in? %>
+        <li class="nav-item float-xs-right">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item float-xs-right">
+          <%= link_to 'Log in', user_session_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
