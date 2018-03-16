@@ -1,0 +1,21 @@
+<%= form_for @school do |f| %>
+  <% if @school.errors.any? %>
+      <ul>
+      <% @school.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.fields_for :user do |user_form| %>
+    <%= render 'devise/registrations/form', f: user_form %>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+    <%= f.label :website %>
+  <%= f.text_field :website %>
+
+  <%= f.submit 'Register as school' %>
+<% end %>
