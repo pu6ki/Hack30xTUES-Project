@@ -35,7 +35,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Devise gem for user authentication and authorization
 gem 'devise'
+gem 'simple_token_authentication'
 
+# Simple debugger
 gem 'pry'
 
 group :development, :test do
