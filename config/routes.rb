@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :recruiters
   resources :contestants
   resources :schools
+  resources :contests do
+    resources :submissions
+  end
 end

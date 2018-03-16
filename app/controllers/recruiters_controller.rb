@@ -24,7 +24,6 @@ class RecruitersController < ApplicationController
         format.json { render @recruiter, status: :created }
       end
     else
-      puts @recruiter.errors.full_messages
       respond_to do |format|
         format.html { render :new }
         format.json { render json: @recruiter.errors, status: :unprocessable_entity }

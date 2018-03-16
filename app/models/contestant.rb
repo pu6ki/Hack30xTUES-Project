@@ -7,6 +7,8 @@ class Contestant < ApplicationRecord
 
   has_and_belongs_to_many :schools
 
+  has_many :submissions
+
   def full_name
     first_name + ' ' + last_name
   end
