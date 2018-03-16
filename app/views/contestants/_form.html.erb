@@ -1,0 +1,25 @@
+<%= form_for @contestant do |f| %>
+  <% if @contestant.errors.any? %>
+      <ul>
+      <% @contestant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.fields_for :user do |user_form| %>
+    <%= render 'devise/registrations/form', f: user_form %>
+  <% end %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :school_ids %>
+  <% school_names = School.all.map(&:name) %>
+  <%= f.select :school_ids, options_from_collection_for_select(School.all, :id, :name), {}, { :multiple => true } %>
+
+  <%= f.submit 'Register as contestant' %>
+<% end %>

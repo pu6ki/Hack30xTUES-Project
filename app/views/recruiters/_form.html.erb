@@ -17,5 +17,5 @@
   <%= f.label :technology %>
   <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true } %>
 
-  <%= f.submit 'Register as contestant' %>
+  <%= f.submit 'Register as recruiter' %>
 <% end %>
