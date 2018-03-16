@@ -1,0 +1,21 @@
+<%= form_for @recruiter do |f| %>
+  <% if @recruiter.errors.any? %>
+      <ul>
+      <% @recruiter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.fields_for :user do |user_form| %>
+    <%= render 'devise/registrations/form', f: user_form %>
+  <% end %>
+
+  <%= f.label :company_name %>
+  <%= f.text_field :company_name %>
+
+  <%= f.label :technology %>
+  <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true } %>
+
+  <%= f.submit 'Register as contestant' %>
+<% end %>
