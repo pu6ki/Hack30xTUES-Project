@@ -1,3 +1,24 @@
-<% @school.each do |s| %>
-  <li><%= link_to s, s %></li>
-<% end %>
+<div class="col-md-8 offset-md-2 text-center wrapper">
+  <% @schools.each do |s| %>
+    <div class="card">
+      <div class="card-title">
+        <h3 class="heading"><%= s.name %></h3>
+      
+        <% if s.website %>
+          <span class="text-muted">
+            <i>website:</i>
+            <%= link_to s.website %>
+          </span>
+          <br>
+        <% end %>
+
+        <span class="text-muted">
+          <i>email:</i>
+          <%= mail_to s.user.email %>
+        </span>
+      </div>
+      <%= link_to "View school info", s, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
+

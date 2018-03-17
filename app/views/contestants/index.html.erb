@@ -1,1 +1,15 @@
-<%= @contestants %>
+<div class="col-md-8 offset-md-2 text-center wrapper">
+  <% @contestants.each do |c| %>
+    <div class="card">
+      <div class="card-title">
+        <h3 class="heading"><%= c.user.username %></h3>
+
+        <span class="text-muted">
+          <%= c.first_name + " " + c.last_name  %>
+        </span>
+      </div>
+      <%= link_to "View contestant info", c, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
+
