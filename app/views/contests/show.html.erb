@@ -1,3 +1,10 @@
-<h1><%= @contest.title %></h1>
+<div class="wrapper text-center col-md-8 offset-md-2 form-wrapper">
+  <h1><%= @contest.title %></h1>
+  <p><%= @contest.description %></p>
+  
+  <%= render 'contest_info', contest: @contest %>
+</div>
 
-<p><%= @contest.description %></p>
+<% if current_user.contestant? %>
+  <%= render 'submissions/submission' %>
+<% end %>

@@ -1,0 +1,11 @@
+<hr>
+<span>
+  Technology:
+  <span class="font-weight-bold"><%= contest.technology.name %>
+</span>
+<br />
+
+<span>
+  Application deadline ends in:
+  <span class="text-info"><%= distance_of_time_in_words(Time.now, contest.deadline)%></span>
+</span>

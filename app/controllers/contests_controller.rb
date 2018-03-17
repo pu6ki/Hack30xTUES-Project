@@ -4,6 +4,8 @@ class ContestsController < ApplicationController
   before_action :validate_recruiter_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_contests,            only: [:new, :create]
   before_action :set_contest,             only: [:show, :edit, :update, :destroy]
+  before_action :set_submission,          only: [:show]
+  before_action :set_submissions,         only: [:show]
 
   def index
     if current_user.recruiter?
@@ -17,11 +19,11 @@ class ContestsController < ApplicationController
   end
 
   def new
-    @contest = @contests.new
+    @contest = Contest.new
   end
 
   def create
-    @contest = @contests.new contest_params
+    @contest = Contest.new contest_params
 
     if @contest.save
       respond_to do |format|
@@ -75,6 +77,14 @@ class ContestsController < ApplicationController
         end
       end
     end
+  end
+
+  def set_submission
+    @submission = Submission.new
+  end
+
+  def set_submissions
+    @submissions = @contest.submissions
   end
 
   def set_contests
