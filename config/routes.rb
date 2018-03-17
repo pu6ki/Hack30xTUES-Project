@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :schools
   resources :contests do
     resources :submissions
+    resources :test_cases
   end
 
   root to: 'contests#index'
