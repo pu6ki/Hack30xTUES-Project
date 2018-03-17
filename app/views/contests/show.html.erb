@@ -3,6 +3,12 @@
   <p><%= @contest.description %></p>
 
   <%= render 'contest_info', contest: @contest %>
+  <br/>
+
+  <% if current_user == @contest.recruiter.user %>
+    <%= link_to "View submissions", contest_submissions_path(@contest), class: 'btn btn-default' %>
+  <% end %>
+  
 </div>
 
 <% if current_user.contestant? %>
