@@ -24,7 +24,7 @@ class SubmissionsController < ApplicationController
       submit_submission @submission
 
       respond_to do |format|
-        format.html { redirect_to @submission }
+        format.html { redirect_to [@contest, @submission] }
         format.json { render @submission, status: :created }
       end
     else
@@ -41,7 +41,7 @@ class SubmissionsController < ApplicationController
   def update
     if @submission.update_attributes submission_params
       respond_to do |format|
-        format.html { redirect_to @submission }
+        format.html { redirect_to [@contest, @submission] }
         format.json { render @submission, status: :ok }
       end
     else
