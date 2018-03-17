@@ -4,6 +4,7 @@ class Contest < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 5 }
+  validates :deadline, presence: true
 
   has_many :submissions
 
