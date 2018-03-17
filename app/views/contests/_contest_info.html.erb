@@ -1,17 +1,25 @@
-<hr>
-<span>
-  Company:
-  <span class="font-weight-bold"><%= link_to contest.recruiter.company_name, contest.recruiter %>
-</span>
-<br />
+<div class="contest-info">
+  <hr>
+  <span>
+    Company:
+    <span class="font-weight-bold"><%= link_to contest.recruiter.company_name, contest.recruiter %>
+  </span>
+  <br />
 
-<span>
-  Technology:
-  <span class="font-weight-bold"><%= contest.technology.name %>
-</span>
-<br />
+  <span>
+    Technology:
+    <span class="font-weight-bold"><%= contest.technology.name %>
+  </span>
+  <br />
 
-<span>
-  Application deadline ends in:
-  <span class="text-info"><%= distance_of_time_in_words(Time.now, contest.deadline)%></span>
-</span>
+  <span>
+    Max points:
+    <span class="font-weight-bold"><%= contest.max_points %>
+  </span>
+  <br />
+
+  <span>
+    Application deadline ends in:
+    <span class="text-info"><%= distance_of_time_in_words(Time.now, contest.deadline)%></span>
+  </span>
+</div>

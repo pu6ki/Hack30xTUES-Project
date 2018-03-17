@@ -91,3 +91,17 @@ body {
 #username {
   color: whitesmoke;
 }
+
+.text-grey {
+  color: lightgrey;
+}
+
+.btn-submission {
+  background-color: white;
+  color: grey;
+}
+
+.btn-submission:hover {
+  text-decoration: none;
+  color: black;
+}
