@@ -20,9 +20,9 @@ class TestCasesController < ApplicationController
   def create
     @test_case = @test_cases.new test_case_params
 
-    if @submission.save
+    if @test_case.save
       respond_to do |format|
-        format.html { redirect_to @test_cases }
+        format.html { redirect_to @contest }
         format.json { render @test_case, status: :created }
       end
     else

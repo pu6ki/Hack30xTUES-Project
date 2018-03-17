@@ -1,0 +1,11 @@
+<div class="wrapper form-wrapper col-md-8 offset-md-2 text-center">
+  <%= form_for @test_case, url: contest_test_cases_path(@contest) do |f| %>
+    <%= f.text_field :input, class: 'form-control', placeholder: 'Input' %>
+    <br />
+
+    <%= f.text_field :expected_output, class: 'form-control', placeholder: 'Expected output' %>
+    <br />
+
+    <%= f.submit "Add test case", class: 'btn btn-default form-control' %>
+  <% end %>
+</div>

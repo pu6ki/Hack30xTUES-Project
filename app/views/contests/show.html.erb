@@ -7,8 +7,9 @@
 
   <% if current_user == @contest.recruiter.user %>
     <%= link_to "View submissions", contest_submissions_path(@contest), class: 'btn btn-default' %>
+    <br />
+    <%= link_to "Add new test case", new_contest_test_case_path(@contest), class: 'btn btn-success' %>    
   <% end %>
-  
 </div>
 
 <% if current_user.contestant? %>
