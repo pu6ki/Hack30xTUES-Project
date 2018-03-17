@@ -15,3 +15,7 @@
     </div>
   <% end %>
 </div>
+
+<% if current_user.recruiter? %>
+  <%= link_to "+", new_contest_path, class: 'btn btn-lg btn-default btn-add btn-circle' %>
+<% end %>
