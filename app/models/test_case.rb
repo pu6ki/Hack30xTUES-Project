@@ -10,18 +10,6 @@ class TestCase < ApplicationRecord
   end
 
   def passing?(output)
-    test.expected_output == output
-  end
-
-  def self.calculate_points(jdoodle_api, test_cases)
-    points = 0
-    test_cases.each do |test|
-      api_result = jdoodle_api.execute test.input
-      api_output = api_result['output']
-
-      points += TestCase::PASSED_TEST_CASE_POINTS if test.passing?(api_output)
-    end
-
-    points
+    expected_output == output
   end
 end

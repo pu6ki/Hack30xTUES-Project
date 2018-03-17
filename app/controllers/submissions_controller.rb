@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   before_action :validate_contestant_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_contest
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission,           only: [:show, :edit, :update, :destroy]
 
   def index
     @submissions = @contest.submissions.all
@@ -21,7 +21,7 @@ class SubmissionsController < ApplicationController
     @submission.contestant = current_user.userable
 
     if @submission.save
-      submit_submission @submission
+      SendSubmissionService.perform @submission
 
       respond_to do |format|
         format.html { redirect_to [@contest, @submission] }
@@ -82,17 +82,5 @@ class SubmissionsController < ApplicationController
 
   def set_submission
     @submission = @contest.submissions.find_by id: params[:id]
-  end
-
-  def submit_submission(submission)
-    jdoodle_api = SubmissionsHelper::JDoodleAPI.new(submission)
-    points = TestCase.calculate_points(jdoodle_api, @contest.test_cases)
-
-    submission.update_attributes(points: points)
-    submission.contestant.schools do |school|
-      school.update_attributes(points: school + points)
-    end
-
-    puts 'Submission successfully submitted!'
   end
 end
