@@ -3,9 +3,9 @@ class TestCasesController < ApplicationController
 
   before_action :validate_recruiter_user
   before_action :set_contest
+  before_action :validate_contest_author
   before_action :set_test_cases
-  before_action :set_test_case,           only: [:show, :edit, :update, :destroy]
-  before_action :validate_contest_author, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_test_case, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -71,7 +71,7 @@ class TestCasesController < ApplicationController
   end
 
   def validate_contest_author
-    if current_user != @contest.recruiter.user
+    if current_user.userable != @contest.recruiter
       respond_to do |format|
         format.html { redirect_to @contest }
         format.json do
