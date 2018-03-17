@@ -5,7 +5,7 @@ class SendSubmissionService
 
     submission.update_attributes(points: points)
     submission.contestant.schools do |school|
-      school.update_attributes(points: school + points)
+      school.update_attributes(points: school.points + points)
     end
   end
 end
