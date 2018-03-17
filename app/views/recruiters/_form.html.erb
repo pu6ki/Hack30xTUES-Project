@@ -11,17 +11,17 @@
     <%= render 'devise/registrations/form', f: user_form %>
   <% end %>
 
-  <%= f.label :company_name %>
-  <%= f.text_field :company_name %>
+  <%= f.text_field :company_name, placeholder: 'Company name', class: 'form-control' %>
+  <br />
 
-  <%= f.label :website %>
-  <%= f.text_field :website %>
+  <%= f.text_field :website, placeholder: 'Website (ex. https://example.com)', class: 'form-control'%>
+  <br />
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, placeholder: 'Description', class: 'form-control' %>
+  <br />
 
-  <%= f.label :technology %>
-  <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true } %>
+  <%= f.label :technology_ids, value: 'Technologies' %>
+  <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true, class: 'form-control' } %>
 
-  <%= f.submit 'Register as recruiter' %>
+  <%= f.submit 'Register as recruiter', class: 'form-control btn btn-default' %>
 <% end %>

@@ -1,29 +1,10 @@
-<h2>Sign up</h2>
+<div class="wrapper form-wrapper col-md-8 offset-md-2 text-center ">
+  <h1 class="heading">Register as:</h2>
+    <div class="row wrapper">
+      <%= link_to "Recruiter", new_recruiter_path, class:"col-md-4 register-option" %>
+      <%= link_to "Contestant", new_contestant_path, class: "col-md-4 register-option"%>
+      <%= link_to "School", new_school_path, class: "col-md-4 register-option" %>
+    </div>
+  <%= render "devise/shared/links" %>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

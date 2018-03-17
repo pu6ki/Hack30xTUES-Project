@@ -11,11 +11,11 @@
     <%= render 'devise/registrations/form', f: user_form %>
   <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: 'School name', class: 'form-control' %>
+  <br/>
 
-    <%= f.label :website %>
-  <%= f.text_field :website %>
+  <%= f.text_field :website, placeholder: 'Website (ex. "https://example.com")', class: 'form-control' %>
+  <br/>
 
-  <%= f.submit 'Register as school' %>
+  <%= f.submit 'Register as school', class: 'btn btn-default form-control' %>
 <% end %>

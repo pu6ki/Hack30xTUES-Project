@@ -16,6 +16,54 @@
 
 @import "bootstrap";
 
+body {
+  background-color: whitesmoke;
+}
+
 .nav-link:hover {
   color: #0288d1 !important;
+}
+
+.wrapper {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.btn {
+  margin: 2vh;
+}
+
+.btn-default, .register-option {
+  background-color: #0288d1;
+  color: white;
+}
+
+.btn-default:hover, .register-option:hover {
+  background-color: #0277bd;
+  color: white;
+  text-decoration: none;
+}
+
+.heading {
+  margin-top: 5vh;
+}
+
+.form-wrapper {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.form-heading {
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+}
+
+.register-option {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  border: 10px solid whitesmoke;
+  font-size: 24px;
+  font-weight: bold;
 }

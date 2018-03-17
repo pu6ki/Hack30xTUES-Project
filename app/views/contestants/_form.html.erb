@@ -11,15 +11,16 @@
     <%= render 'devise/registrations/form', f: user_form %>
   <% end %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+  <br />
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+  <br />
 
-  <%= f.label :school_ids %>
+  <%= f.label :school_ids, value: 'Schools' %>
   <% school_names = School.all.map(&:name) %>
-  <%= f.select :school_ids, options_from_collection_for_select(School.all, :id, :name), {}, { :multiple => true } %>
+  <%= f.select :school_ids, options_from_collection_for_select(School.all, :id, :name), {}, { :multiple => true, class: 'form-control' } %>
+  <br />
 
-  <%= f.submit 'Register as contestant' %>
+  <%= f.submit 'Register as contestant', class: 'form-control btn btn-default' %>
 <% end %>
