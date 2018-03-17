@@ -9,6 +9,8 @@ class School < ApplicationRecord
 
   has_and_belongs_to_many :contestants
 
+  default_scope { order(points: :desc) }
+
   def to_s
     "#{user} [#{name}]"
   end
