@@ -19,6 +19,8 @@ class Users::SessionsController < Devise::SessionsController
           sign_in @user
 
           render json: current_user
+        else
+          render json: { error: 'User with this credentials not found' }, status: 404
         end
       end
     end
