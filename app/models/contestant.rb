@@ -16,4 +16,8 @@ class Contestant < ApplicationRecord
   def to_s
     "#{user} [#{full_name}]"
   end
+
+  def contests_participated
+    Contest.select { |c| c.submissions.any? { |s| self == s.contestant } }
+  end
 end
