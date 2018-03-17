@@ -1,7 +1,13 @@
 <div class="wrapper col-md-8 offset-md-2 col-sm-10 offset-sm-1 text-center">
   <%= render @contestant %>
-
+  
+  <h3 id="user-contests-title">User contests: </h3>
+  
   <% @contestant.contests_participated.each do |c| %>
-    <li><%= c %></li>
-  <% end %>
+    <div class="card">
+      <h4 class="heading card-title"><%= c.title %></h4>
+      <%= render 'contests/contest_info', contest: c %>
+      <%= link_to "View contest info", c, class: 'btn btn-default' %>      
+    </div>
+    <% end %>
 </div>
