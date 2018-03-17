@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   before_action :validate_contestant_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_contest
-  before_action :set_submission,           only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
   def index
     @submissions = @contest.submissions.all

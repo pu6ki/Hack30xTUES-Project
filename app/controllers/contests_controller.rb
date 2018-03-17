@@ -4,8 +4,8 @@ class ContestsController < ApplicationController
   before_action :validate_recruiter_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_contests,            only: [:new, :create]
   before_action :set_contest,             only: [:show, :edit, :update, :destroy]
-  before_action :set_submission,          only: [:show]
   before_action :set_submissions,         only: [:show]
+  before_action :set_submission,          only: [:show]
 
   def index
     if current_user.recruiter?
@@ -79,12 +79,12 @@ class ContestsController < ApplicationController
     end
   end
 
-  def set_submission
-    @submission = Submission.new
-  end
-
   def set_submissions
     @submissions = @contest.submissions
+  end
+
+  def set_submission
+    @submission = @submissions.new
   end
 
   def set_contests
