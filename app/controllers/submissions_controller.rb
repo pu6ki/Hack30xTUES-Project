@@ -21,6 +21,8 @@ class SubmissionsController < ApplicationController
     @submission.contestant = current_user.userable
 
     if @submission.save
+      submit_submission @submission
+
       respond_to do |format|
         format.html { redirect_to @submission }
         format.json { render @submission, status: :created }
@@ -80,5 +82,24 @@ class SubmissionsController < ApplicationController
 
   def set_submission
     @submission = @contest.submissions.find_by id: params[:id]
+  end
+
+  def submit_submission(submission)
+    jdoodle_api = SubmissionsHelper::JDoodleAPI.new(submission)
+
+    points = 0
+    @contest.test_cases.each do |test|
+      api_result = jdoodle_api.execute test.input
+
+      is_correct_answer = api_result['output'] == test.expected_output
+      points += TestCase::PASSED_TEST_CASE_POINTS if is_correct_answer
+    end
+
+    submission.update_attributes(points: points)
+
+    school = submission.contestant.school
+    school.update_attributes(points: school + points)
+
+    puts 'Submission successfully submitted!'
   end
 end

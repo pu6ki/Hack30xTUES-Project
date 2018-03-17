@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316170853) do
+ActiveRecord::Schema.define(version: 20180317082859) do
 
   create_table "contestants", force: :cascade do |t|
     t.string "first_name"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20180316170853) do
 
   create_table "technologies", force: :cascade do |t|
     t.string "name"
-    t.integer "hackerrank_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180316170853) do
     t.integer "contest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "input"
     t.index ["contest_id"], name: "index_test_cases_on_contest_id"
   end
 
