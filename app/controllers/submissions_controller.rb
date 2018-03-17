@@ -86,7 +86,7 @@ class SubmissionsController < ApplicationController
 
   def submit_submission(submission)
     jdoodle_api = SubmissionsHelper::JDoodleAPI.new(submission)
-    points = TestCase.calculate_results(jdoodle_api, @contest.test_cases)
+    points = TestCase.calculate_points(jdoodle_api, @contest.test_cases)
 
     submission.update_attributes(points: points)
     submission.contestant.schools do |school|
