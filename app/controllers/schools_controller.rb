@@ -3,6 +3,7 @@ class SchoolsController < ApplicationController
 
   before_action :set_school, only: [:show, :edit, :update]
   before_action :set_contestants, only: [:show, :edit, :update]
+  before_action :check_access_for_unauthorized, only: [:create, :new]
 
   def index
     @schools = School.all

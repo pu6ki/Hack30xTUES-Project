@@ -1,6 +1,8 @@
 class ContestantsController < ApplicationController
-  # acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
+  acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
+
   before_action :set_contestant, only: [:edit, :update, :show, :destory]
+  before_action :check_access_for_unauthorized, only: [:create, :new]
 
   def index
     @contestants = Contestant.all
