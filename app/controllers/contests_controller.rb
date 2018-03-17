@@ -19,11 +19,11 @@ class ContestsController < ApplicationController
   end
 
   def new
-    @contest = Contest.new
+    @contest = @contests.new
   end
 
   def create
-    @contest = Contest.new contest_params
+    @contest = @contests.new contest_params
 
     if @contest.save
       respond_to do |format|
