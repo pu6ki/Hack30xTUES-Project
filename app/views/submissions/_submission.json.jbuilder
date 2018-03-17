@@ -1,3 +1,4 @@
+json.id submission.id
 json.contest submission.contest
 json.contestant submission.contestant
 json.source submission.source
