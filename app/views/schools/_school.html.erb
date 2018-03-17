@@ -1,0 +1,7 @@
+<h1>Contestants for <%= school %>: </h1>
+
+<ul>
+  <% school.contestants.each do |contestant| %>
+    <li><%= link_to contestant, contestant %></li>
+  <% end %>
+</ul>
