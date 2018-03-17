@@ -1,7 +1,10 @@
 json.id contest.id
 json.title contest.title
 json.description contest.description
-json.technology contest.technology
+
+json.technology do
+  json.partial! 'technologies/technology', technology: contest.technology
+end
 
 json.recruiter do
   json.partial! 'recruiters/recruiter', recruiter: contest.recruiter
