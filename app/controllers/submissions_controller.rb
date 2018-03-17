@@ -7,6 +7,11 @@ class SubmissionsController < ApplicationController
 
   def index
     @submissions = @contest.submissions.all
+
+    if current_user.contestant?
+      current_contestant = current_user.userable
+      @submissions = @submissions.select { |s| s.contestant == current_contestant }
+    end
   end
 
   def show
