@@ -3,24 +3,7 @@
 
   <% @contest.submissions.each do |s| %>
     <div class="col-md-6 offset-md-3 submission">
-      <% if s.points == @contest.max_points %>
-        <div class="card bg-success text-white font-weight-bold">
-      <% elsif s.points > 0 && s.points < @contest.max_points %>
-        <div class="card bg-warning text-white font-weight-bold">
-      <% else %>
-        <div class="card bg-danger text-white font-weight-bold">
-      <% end %>
-        <span class="score">
-          <span class="info">Submission <%= s.id%></span>
-          <br />
-          Score: 
-          <span><%= s.points %> / <%= @contest.max_points %></span>
-        </span>
-        
-        <%= link_to "View submission", [@contest, s], class: 'btn btn-submission' %>
-      </div>
+      <%= render 'submission', submission: s %>
     </div>
   <% end %>
 </div>
-
-
