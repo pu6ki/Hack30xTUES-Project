@@ -1,8 +1,8 @@
 class RecruitersController < ApplicationController
   acts_as_token_authentication_handler_for User, only: [:index, :show, :edit, :update]
 
-  before_action :set_recruiter, only: [:show, :edit, :update]
-  before_action :check_access_for_unauthorized, only: [:create, :new]
+  before_action :set_recruiter,                  only: [:show, :edit, :update]
+  before_action :check_access_for_unauthorized,  only: [:create, :new]
 
   def index
     @recruiters = Recruiter.all

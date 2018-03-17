@@ -6,6 +6,7 @@ class ContestsController < ApplicationController
   before_action :set_contest,             only: [:show, :edit, :update, :destroy]
   before_action :set_submissions,         only: [:show]
   before_action :set_submission,          only: [:show]
+  before_action :validate_contest_author, only: [:edit, :update, :destroy]
 
   def index
     if current_user.recruiter?
@@ -73,6 +74,19 @@ class ContestsController < ApplicationController
         format.json do
           render json: {
             errors: 'You should be a recruiter in order to access this page'
+          }
+        end
+      end
+    end
+  end
+
+  def validate_contest_author
+    if current_user != @contest.recruiter.user
+      respond_to do |format|
+        format.html { redirect_to @contest }
+        format.json do
+          render json: {
+            errors: 'You should be the author of this contest in order to access this page'
           }
         end
       end
