@@ -6,7 +6,11 @@ class ContestsController < ApplicationController
   before_action :set_contest,             only: [:show, :edit, :update, :destroy]
 
   def index
-    @contests = Contest.all
+    if current_user.recruiter?
+      @contests = current_user.userable.contests.all
+    else
+      @contests = Contest.all
+    end
   end
 
   def show
