@@ -5,11 +5,11 @@
   <%= render 'contest_info', contest: @contest %>
   <br/>
 
-  <%= link_to "View submissions", contest_submissions_path(@contest), class: 'btn btn-default' %>
+  <%= link_to 'View submissions', contest_submissions_path(@contest), class: 'btn btn-default' %>
 
   <% if current_user == @contest.recruiter.user %>
     <br />
-    <%= link_to "Add new test case", new_contest_test_case_path(@contest), class: 'btn btn-success' %>
+    <%= link_to 'Add new test case', new_contest_test_case_path(@contest), class: 'btn btn-success' %>
   <% end %>
 </div>
 
