@@ -4,8 +4,15 @@ class SendSubmissionService
     points = CalculateTestCasePointsService.perform(jdoodle_client, submission.contest.test_cases)
 
     submission.update_attributes(points: points)
-    submission.contestant.schools.each do |school|
-      school.update_attributes(points: school.points + points)
+
+    if points == submission.contest.max_points
+      submission.update_attributes(solving: true)
+    end
+
+    unless submission.solving?
+      submission.contestant.schools.each do |school|
+        school.update_attributes(points: school.points + points)
+      end
     end
   end
 end

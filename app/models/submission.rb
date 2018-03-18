@@ -4,6 +4,8 @@ class Submission < ApplicationRecord
 
   validates :source, presence: true
 
+  default_scope { order(id: :desc) }
+
   def to_s
     "#{self.class} by #{contestant} for #{contest}"
   end
