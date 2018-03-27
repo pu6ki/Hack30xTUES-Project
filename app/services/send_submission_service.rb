@@ -1,7 +1,7 @@
 class SendSubmissionService
   def self.perform(submission)
     jdoodle_client = Jdoodle::Client.new(submission)
-    points = CalculateTestCasePointsService.perform(jdoodle_client, submission.contest.test_cases)
+    points = CalculateTestCasePointsService.perform jdoodle_client, submission.contest.test_cases
 
     submission.update_attributes(points: points)
 
@@ -9,10 +9,10 @@ class SendSubmissionService
       submission.update_attributes(solving: true)
     end
 
-    unless submission.solving?
-      submission.contestant.schools.each do |school|
-        school.update_attributes(points: school.points + points)
-      end
+    # unless submission.solving?
+    # end
+    submission.contestant.schools.each do |school|
+      school.update_attributes(points: school.points + points)
     end
   end
 end
