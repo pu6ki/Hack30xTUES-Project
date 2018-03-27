@@ -41,6 +41,9 @@ gem 'pry'
 # Sending REST API Requests for submissions
 gem 'httparty'
 
+# Markdown support
+gem 'redcarpet'
+
 # Styles
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
