@@ -13,6 +13,15 @@ class Contest < ApplicationRecord
     test_cases.count * TestCase::PASSED_TEST_CASE_POINTS
   end
 
+  def self.search(term)
+    if term
+      q = "%#{term}%"
+      where('title LIKE ? or description LIKE ?', q, q)
+    else
+      all
+    end
+  end
+
   def to_s
     "\"#{title}\" by #{recruiter}"
   end

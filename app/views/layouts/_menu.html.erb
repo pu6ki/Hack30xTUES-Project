@@ -11,14 +11,19 @@
         <li class="nav-item">
           <%= link_to 'Contests', contests_path, class: 'nav-link' %>
         </li>
-        <div class="nav-item">
+        <li class="nav-item">
           <%= link_to 'Schools', schools_path, class: 'nav-link' %>
-        </div>
-        <div class="nav-item">
+        </li>
+        <li class="nav-item">
           <%= link_to 'Recruiters', recruiters_path, class: 'nav-link' %>
-        </div>
+        </li>
+
+        <li class="nav-item form-wrapper">
+          <%= render 'contests/search_form' %>
+        </li>
       <% end %>
     </ul>
+
     <ul class="navbar-nav ml-auto align-items-center">
       <% if user_signed_in? %>
         <li class="nav-item float-xs-right" id="username">
