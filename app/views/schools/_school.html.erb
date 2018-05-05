@@ -1,9 +1,6 @@
-<div class="wrapper col-md-8 offset-md-2 col-sm-10 offset-sm-1 text-center">
-  <h1 class="heading">Contestants from <%= school.name %>: </h1>
-  <% school.contestants.each do |contestant| %>
-    <%= render contestant %>
-    <%= link_to "View profile info", contestant, class: 'btn btn-default' %>
-    <hr>
-  <% end %>
-</div>
-
+<h1 class="heading">Contestants from <%= school.name %>: </h1>
+<% school.contestants.each do |contestant| %>
+  <%= render contestant %>
+  <%= link_to "View profile info", contestant, class: 'btn btn-default' %>
+  <hr>
+<% end %>

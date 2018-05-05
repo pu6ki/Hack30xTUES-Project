@@ -1,4 +1,4 @@
-<div class="col-md-8 offset-md-2 text-center wrapper">
+<div class="text-center">
   <% @schools.each do |s| %>
     <div class="card">
       <div class="card-title">
@@ -15,7 +15,7 @@
           <i>email:</i>
           <%= mail_to s.user.email %>
         </div>
-        
+
         <div class="text-muted">
           <i>Points:</i>
           <%= s.points %>

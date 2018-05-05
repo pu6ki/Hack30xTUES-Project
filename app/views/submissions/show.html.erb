@@ -1,9 +1,9 @@
-<div class="wrapper col-md-8 offset-md-2">
-  <h1 class="heading text-center">Submission <%= @submission.id%></h1>
-  <h3 class="text-center">Author: <%= link_to  @submission.contestant.user.username, @submission.contestant%></h3>
+<div>
+  <h1 class="heading text-center">Submission <%= @submission.id %></h1>
+  <h3 class="text-center">Author: <%= link_to  @submission.contestant.user.username, @submission.contestant %></h3>
   <h3 class="text-center">
     Score:
-    
+
     <% if @submission.points == @contest.max_points %>
       <span class="text-success">
     <% elsif @submission.points > 0 && @submission.points < @contest.max_points %>
@@ -13,7 +13,7 @@
     <% end %>
         <%= @submission.points %> / <%= @submission.contest.max_points %>
       </span>
-    
+
   </h3>
   <br/>
   <!--<pre><code><%=j @submission.source %></code></pre>-->
