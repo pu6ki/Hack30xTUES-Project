@@ -1,7 +1,5 @@
-<div class="text-center">
-  <%= form_tag(contests_path, method: :get) do %>
-    <%= text_field_tag :term, params[:term] %>
+<%= form_tag(contests_path, method: :get, class: 'form-inline my-2 my-lg-0') do %>
+  <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', placeholder: 'Search' %>
 
-    <%= submit_tag 'Search', name: nil %>
-  <% end %>
-</div>
+  <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-info my-2 my-sm-0' %>
+<% end %>
