@@ -15,4 +15,14 @@ class Recruiter < ApplicationRecord
   def to_s
     "#{user} [#{company_name}]"
   end
+
+  def self.search(term)
+    if term
+      q = "%#{term}%"
+      where('company_name LIKE ? or description LIKE ?', q, q)
+    else
+      all
+    end
+  end
+
 end

@@ -1,0 +1,25 @@
+<% schools.each do |s| %>
+  <div class="card">
+    <div class="card-title">
+      <h3 class="heading"><%= s.name %></h3>
+
+      <% if s.website %>
+        <div class="text-muted">
+          <i>website:</i>
+          <%= link_to s.website, s.website %>
+        </div>
+      <% end %>
+
+      <div class="text-muted">
+        <i>email:</i>
+        <%= mail_to s.user.email %>
+      </div>
+
+      <div class="text-muted">
+        <i>Points:</i>
+        <%= s.points %>
+      </div>
+    </div>
+    <%= link_to "View school info", s, class: 'btn btn-default' %>
+  </div>
+<% end %>

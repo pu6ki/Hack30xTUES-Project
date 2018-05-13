@@ -14,4 +14,14 @@ class School < ApplicationRecord
   def to_s
     "#{user} [#{name}]"
   end
+
+  def self.search(term)
+    if term
+      q = "%#{term}%"
+      where('name LIKE ?', q)
+    else
+      all
+    end
+  end
+
 end

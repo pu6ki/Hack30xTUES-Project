@@ -14,8 +14,6 @@ class ContestsController < ApplicationController
     else
       @contests = Contest.all
     end
-
-    @contests = @contests.search(params[:term])
   end
 
   def show
@@ -66,7 +64,7 @@ class ContestsController < ApplicationController
   private
 
   def contest_params
-    params.require(:contest).permit(:title, :description, :deadline, :technology_id, :term)
+    params.require(:contest).permit(:title, :description, :deadline, :technology_id)
   end
 
   def validate_recruiter_user

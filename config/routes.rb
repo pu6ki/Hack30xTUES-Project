@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :submissions
     resources :test_cases
   end
+
+  resources :search, only: [:index]
 end

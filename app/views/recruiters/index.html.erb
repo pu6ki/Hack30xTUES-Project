@@ -1,15 +1,3 @@
 <div class="text-center">
-  <% @recruiters.each do |r| %>
-    <div class="card">
-      <div class="card-title">
-        <h3 class="heading"><%= r.company_name %></h3>
-
-        <span class="text-muted">
-          <i>website: </i>
-          <%= link_to r.website, r.website  %>
-        </span>
-      </div>
-      <%= link_to "View recruiter info", r, class: 'btn btn-default' %>
-    </div>
-  <% end %>
+  <%= render 'body', recruiters: @recruiters %>
 </div>
