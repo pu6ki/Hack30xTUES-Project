@@ -11,17 +11,10 @@ class School < ApplicationRecord
 
   default_scope { order(points: :desc) }
 
+  include Searchable
+  @searchable_fields = %w[name]
+
   def to_s
     "#{user} [#{name}]"
   end
-
-  def self.search(term)
-    if term
-      q = "%#{term}%"
-      where('name LIKE ?', q)
-    else
-      all
-    end
-  end
-
 end

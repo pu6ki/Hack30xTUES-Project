@@ -9,17 +9,11 @@ class Contest < ApplicationRecord
   has_many :test_cases
   has_many :submissions
 
+  include Searchable
+  @searchable_fields = %w[title description]
+
   def max_points
     test_cases.count * TestCase::PASSED_TEST_CASE_POINTS
-  end
-
-  def self.search(term)
-    if term
-      q = "%#{term}%"
-      where('title LIKE ? or description LIKE ?', q, q)
-    else
-      all
-    end
   end
 
   def to_s
