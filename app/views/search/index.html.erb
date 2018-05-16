@@ -1,6 +1,14 @@
 <div class="text-center">
-  <%= render 'contests/body', contests: @contests %>  
-  <%= render 'recruiters/body', recruiters: @recruiters %>
-  <%= render 'schools/body', schools: @schools %>
+  <% if !@contests.empty? %>
+    <h3>Contests:</h3>
+    <%= render 'contests/body', contests: @contests %>
+  <% elsif !@recruiters.empty? %>
+    <h3>Recruiters:</h3>
+    <%= render 'recruiters/body', recruiters: @recruiters %>
+  <% elsif !@schools.empty? %>
+    <h3>Schools:</h3>
+    <%= render 'schools/body', schools: @schools %>
+  <% else %>
+    <h2>There is nothing here... :-(</h2>
+  <% end %>
 </div>
-
