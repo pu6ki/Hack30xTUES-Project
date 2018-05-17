@@ -3,11 +3,11 @@
 
   <h3 id="user-contests-title">User contests: </h3>
 
-  <% @contestant.contests_participated.each do |c| %>
+  <% @contestant.contests_participated.each do |contest| %>
     <div class="card">
-      <h4 class="heading card-title"><%= c.title %></h4>
-      <%= render 'contests/contest_info', contest: c %>
-      <%= link_to "View contest info", c, class: 'btn btn-default' %>
+      <h4 class="heading card-title"><%= contest.title %></h4>
+      <%= render 'contests/contest_info', contest: contest %>
+      <%= link_to 'View contest info', contest, class: 'btn btn-default' %>
     </div>
     <% end %>
 </div>

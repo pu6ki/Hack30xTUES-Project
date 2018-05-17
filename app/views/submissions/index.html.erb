@@ -1,9 +1,9 @@
 <div class="text-center">
   <h1 class="heading">Submissions for <%= @contest.title %>: </h1>
 
-  <% @contest.submissions.each do |s| %>
+  <% @contest.submissions.each do |submission| %>
     <div class="col-md-6 offset-md-3 submission">
-      <%= render 'submission', submission: s %>
+      <%= render 'submission', submission: submission %>
     </div>
   <% end %>
 </div>

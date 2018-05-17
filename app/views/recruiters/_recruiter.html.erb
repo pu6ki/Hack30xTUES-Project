@@ -1,9 +1,19 @@
 <div class="card">
   <div class="card-title">
     <h3 class="heading"><%= recruiter.company_name %></h3>
-    <h4 class="text-muted"><%= link_to recruiter.website, recruiter.website %></h4>
+    <h4 class="text-muted">
+      <% if recruiter.website.empty? %>
+        The recruiter did not provided a website.
+      <% else %>
+        <%= link_to recruiter.website, recruiter.website %>
+      <% end %>
+    </h4>
   </div>
   <div class="card-body">
-    <%= recruiter.description %>
+    <% if recruiter.description.empty? %>
+      There is no detailed description for this recruiter.
+    <% else %>
+      <%= recruiter.description %>
+    <% end %>
   </div>
 </div>
