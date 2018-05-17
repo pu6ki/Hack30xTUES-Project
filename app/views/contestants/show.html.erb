@@ -3,11 +3,15 @@
 
   <h3 id="user-contests-title">User contests: </h3>
 
-  <% @contestant.contests_participated.each do |contest| %>
-    <div class="card">
-      <h4 class="heading card-title"><%= contest.title %></h4>
-      <%= render 'contests/contest_info', contest: contest %>
-      <%= link_to 'View contest info', contest, class: 'btn btn-default' %>
-    </div>
+  <% if @contestant.contests_participated.empty? %>
+    <h4 class="heading text-muted">This contestant did not participated in any contests yet.</h4>
+  <% else %>
+    <% @contestant.contests_participated.each do |contest| %>
+      <div class="card">
+        <h4 class="heading card-title"><%= contest.title %></h4>
+        <%= render 'contests/contest_info', contest: contest %>
+        <%= link_to 'View contest info', contest, class: 'btn btn-default' %>
+      </div>
     <% end %>
+  <% end %>
 </div>
