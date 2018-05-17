@@ -9,9 +9,6 @@ class SendSubmissionService
       submission.update_attributes(solving: true)
     end
 
-    puts "SUBMISSION: #{submission}"
-    puts submission.solving?
-
     if submission.contestant.solving_submissions(submission.contest).empty?
       submission.contestant.schools.each do |school|
         school.update_attributes(points: school.points + points)
