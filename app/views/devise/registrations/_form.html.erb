@@ -1,11 +1,12 @@
-<%= f.text_field :username, autofocus: true, placeholder: 'Username', class: 'form-control' %>
+<%= f.text_field :username, autofocus: true, placeholder: 'Username', class: 'form-control', required: true %>
 <br />
 
-<%= f.email_field :email, autocomplete: 'email', placeholder: 'Email', class: 'form-control' %>
+<%= f.email_field :email, autocomplete: 'email', placeholder: 'Email', class: 'form-control', required: true %>
 <br />
 
-<%= f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control' %>
+<%= f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control', required: true %>
 <br />
 
-<%= f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm Password', class: 'form-control' %>
+<%= f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm Password', class: 'form-control', required: true %>
 <br />
+
