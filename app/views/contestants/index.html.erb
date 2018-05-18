@@ -1,14 +1,15 @@
 <div class="text-center">
-  <% @contestants.each do |c| %>
+  <% @contestants.each do |contestant| %>
     <div class="card">
       <div class="card-title">
-        <h3 class="heading"><%= c.user.username %></h3>
+        <h3 class="heading"><%= contestant.user.username %></h3>
 
         <span class="text-muted">
-          <%= c.first_name + " " + c.last_name  %>
+          <%= contestant.full_name %>
         </span>
       </div>
-      <%= link_to "View contestant info", c, class: 'btn btn-default' %>
+
+      <%= link_to 'View contestant info', contestant, class: 'btn btn-default' %>
     </div>
   <% end %>
 </div>

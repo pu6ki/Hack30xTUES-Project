@@ -17,7 +17,17 @@ class Contestant < ApplicationRecord
     "#{user} [#{full_name}]"
   end
 
+  def submissions_by_contest(contest)
+    contest.submissions.select { |submission| self == submission.contestant }
+  end
+
   def contests_participated
-    Contest.select { |c| c.submissions.any? { |s| self == s.contestant } }
+    Contest.select do |contest|
+      submission_by_contest(contest)
+    end
+  end
+
+  def solving_submissions(contest)
+    submissions_by_contest(contest).select(&:solving?)
   end
 end

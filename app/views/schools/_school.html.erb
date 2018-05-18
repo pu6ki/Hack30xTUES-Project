@@ -1,6 +1,6 @@
 <h1 class="heading">Contestants from <%= school.name %>: </h1>
 <% school.contestants.each do |contestant| %>
   <%= render contestant %>
-  <%= link_to "View profile info", contestant, class: 'btn btn-default' %>
+  <%= link_to 'View profile info', contestant, class: 'btn btn-default' %>
   <hr>
 <% end %>

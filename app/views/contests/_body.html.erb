@@ -1,15 +1,1 @@
-<% contests.each do |c| %>
-  <div class="card">
-    <div class="card-title">
-      <h3 class="heading"><%= c.title %></h3>
-
-      <span class="text-muted">
-        <%= truncate(c.description, length: 100) %>
-      </span>
-      <br>
-
-      <%= render 'contests/contest_info', contest: c %>
-    </div>
-    <%= link_to "View contest info", c, class: 'btn btn-default' %>
-  </div>
-<% end %>
+<%= render contests %>
