@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root to: 'contests#index'
 
   devise_for :users,
-             only: [:sessions, :registrations, :passwords],
-             controllers: { sessions: 'users/sessions' }
+            only: [:sessions, :registrations, :passwords],
+            controllers: { sessions: 'users/sessions' }
 
   resources :recruiters
   resources :contestants

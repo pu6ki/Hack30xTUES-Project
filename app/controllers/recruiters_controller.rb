@@ -63,7 +63,7 @@ class RecruitersController < ApplicationController
         :website,
         :description,
         technology_ids: [],
-        user_attributes: [:username, :email, :password]
+        user_attributes: [:username, :email, :password, :description]
       )
   end
 end

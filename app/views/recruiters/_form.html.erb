@@ -17,9 +17,6 @@
   <%= f.text_field :website, placeholder: 'Website (ex. https://example.com)', class: 'form-control'%>
   <br />
 
-  <%= f.text_field :description, placeholder: 'Description', class: 'form-control' %>
-  <br />
-
   <%= f.label :technology_ids, value: 'Technologies' %>
   <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true, class: 'form-control' } %>
 

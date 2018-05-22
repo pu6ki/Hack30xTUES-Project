@@ -47,7 +47,7 @@ class ContestantsController < ApplicationController
         :first_name,
         :last_name,
         school_ids: [],
-        user_attributes: [:username, :email, :password]
+        user_attributes: [:username, :email, :password, :description]
       )
   end
 end
