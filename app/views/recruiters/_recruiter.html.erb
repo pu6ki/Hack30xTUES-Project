@@ -10,10 +10,6 @@
     </h4>
   </div>
   <div class="card-body">
-    <% if recruiter.description.empty? %>
-      There is no detailed description for this recruiter.
-    <% else %>
-      <%= recruiter.description %>
-    <% end %>
+    <%= render 'users/show' %>
   </div>
 </div>

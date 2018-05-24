@@ -26,8 +26,11 @@
 
     <ul class="navbar-nav ml-auto align-items-center">
       <% if user_signed_in? %>
-        <li class="nav-item float-xs-right" id="username">
-          <%= current_user.username %>
+        <li class="nav-item float-xs-right">
+          <img id="profile-image" src="<%= current_user.image_src %>">
+        </li>
+        <li class="nav-item float-xs-right" id="profile">
+          <%= link_to current_user.username, get_link_to_object_by_user(current_user), class: 'nav-link' %>
         </li>
         <li class="nav-item float-xs-right">
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>

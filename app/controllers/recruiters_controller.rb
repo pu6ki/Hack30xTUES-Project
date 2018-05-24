@@ -9,6 +9,7 @@ class RecruitersController < ApplicationController
   end
 
   def show
+    @user = @recruiter.user
   end
 
   def new

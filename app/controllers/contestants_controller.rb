@@ -17,6 +17,7 @@ class ContestantsController < ApplicationController
   end
 
   def show
+    @user = @contestant.user
   end
 
   def create

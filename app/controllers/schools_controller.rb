@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
   end
 
   def show
+    @user = @school.user
   end
 
   def new

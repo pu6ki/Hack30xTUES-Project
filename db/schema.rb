@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522121115) do
+ActiveRecord::Schema.define(version: 20180523232129) do
 
   create_table "contestants", force: :cascade do |t|
     t.string "first_name"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180522121115) do
     t.string "username"
     t.string "authentication_token", limit: 30
     t.string "description"
+    t.string "image_src"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
