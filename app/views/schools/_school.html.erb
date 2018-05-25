@@ -1,7 +1,13 @@
-<%= render 'users/show' %>
-<h1 class="heading">Contestants from <%= school.name %>: </h1>
-<% school.contestants.each do |contestant| %>
-  <%= render contestant %>
-  <%= link_to 'View profile info', contestant, class: 'btn btn-default' %>
-  <hr>
+<h1 class="heading text-center"><%= school.name %></h1>
+<div class="col-md-12">
+  <%= render 'users/show' %>
+</div>
+
+<div class="col-md-12">
+  <h2 class="heading">Contestants from <%= school.name %>: </h2>
+  <% school.contestants.each do |contestant| %>
+    <%= render contestant %>
+    <%= link_to 'View profile info', contestant, class: 'btn btn-default' %>
+    <hr>
+</div>
 <% end %>

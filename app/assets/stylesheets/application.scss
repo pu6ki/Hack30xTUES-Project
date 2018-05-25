@@ -22,6 +22,7 @@ body {
 
 .nav-link:hover {
   color: #0288d1 !important;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -109,4 +110,9 @@ body {
 
 #profile-image {
   width:35px;
+}
+
+
+a:hover {
+  text-decoration: none;
 }

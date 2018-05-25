@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  acts_as_token_authentication_handler_for User
+
   def index
     @contests = Contest.search search_params
     @schools = School.search search_params

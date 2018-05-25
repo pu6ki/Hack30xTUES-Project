@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="text-center">
+      <h2>Inbox</h2>
+    </div>
+    <ul class="list-group">
+      <% @conversations.each do |conversation| %>
+        <li class="list-group-item" data-conversation-id="<%= conversation.id %>">
+          <%= image_tag conversation.recipient(current_user).image_src, id: 'profile-image', class:'mr-3', alt: conversation.recipient(current_user).username %>
+          <%= link_to conversation.recipient(current_user).username, conversation_messages_path(conversation) %>
+          <% if !conversation.unread_message_count(current_user).zero? %>
+            <span class="badge"><%= conversation.unread_message_count(current_user) %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>

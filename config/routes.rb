@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: [:index]
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
 end

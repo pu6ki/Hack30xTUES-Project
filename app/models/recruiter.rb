@@ -16,7 +16,7 @@ class Recruiter < ApplicationRecord
   has_many :contests
 
   include Searchable
-  @searchable_fields = %w[company_name description]
+  @searchable_fields = %w[company_name]
 
   def to_s
     "#{user} [#{company_name}]"
