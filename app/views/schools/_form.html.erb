@@ -17,5 +17,5 @@
   <%= f.text_field :website, placeholder: 'Website (ex. "https://example.com")', class: 'form-control' %>
   <br/>
 
-  <%= f.submit 'Register as school', class: 'btn btn-default form-control' %>
+  <%= f.submit yield(:btn_text), class: 'btn btn-default form-control' %>
 <% end %>

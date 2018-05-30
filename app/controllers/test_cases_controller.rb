@@ -57,19 +57,6 @@ class TestCasesController < ApplicationController
 
   private
 
-  def validate_recruiter_user
-    unless current_user.recruiter?
-      respond_to do |format|
-        format.html { redirect_to contest_test_cases_path }
-        format.json do
-          render json: {
-            errors: 'You should be a recruiter in order to access this page'
-          }
-        end
-      end
-    end
-  end
-
   def validate_contest_author
     if current_user.userable != @contest.recruiter
       respond_to do |format|

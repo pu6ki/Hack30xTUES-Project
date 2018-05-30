@@ -46,19 +46,6 @@ class SubmissionsController < ApplicationController
     params.require(:submission).permit(:source)
   end
 
-  def validate_contestant_user
-    unless current_user.contestant?
-      respond_to do |format|
-        format.html { redirect_to contest_submissions_path }
-        format.json do
-          render json: {
-            errors: 'You should be a contestant in order to access this page'
-          }
-        end
-      end
-    end
-  end
-
   def set_contest
     @contest = Contest.find_by id: params[:contest_id]
   end

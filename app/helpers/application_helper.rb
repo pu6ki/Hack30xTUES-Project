@@ -12,13 +12,23 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def object_by_user(user)
+    if user.contestant?
+      Contestant.joins(:user).where(users: { id: user.id }).last
+    elsif user.recruiter?
+      Recruiter.joins(:user).where(users: { id: user.id }).last
+    elsif user.school?
+      School.joins(:user).where(users: { id: user.id }).last
+    end
+  end
+
   def get_link_to_object_by_user(user)
     if user.contestant?
-      contestant_path Contestant.joins(:user).where(users: { id: user.id }).last
+      contestant_path object_by_user user
     elsif user.recruiter?
-      recruiter_path Recruiter.joins(:user).where(users: { id: user.id }).last
+      recruiter_path object_by_user user
     elsif user.school?
-      school_path School.joins(:user).where(users: { id: user.id }).last
+      school_path object_by_user user
     end
   end
 

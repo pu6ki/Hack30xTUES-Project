@@ -20,5 +20,5 @@
   <%= f.label :technology_ids, value: 'Technologies' %>
   <%= f.select :technology_ids, options_from_collection_for_select(Technology.all, :id, :name), {}, { :multiple => true, class: 'form-control' } %>
 
-  <%= f.submit 'Register as recruiter', class: 'form-control btn btn-default' %>
+  <%= f.submit yield(:btn_text), class: 'form-control btn btn-default' %>
 <% end %>

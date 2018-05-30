@@ -22,5 +22,5 @@
   <%= f.select :school_ids, options_from_collection_for_select(School.all, :id, :name), {}, { :multiple => true, class: 'form-control' } %>
   <br />
 
-  <%= f.submit 'Register as contestant', class: 'form-control btn btn-default' %>
+  <%= f.submit yield(:btn_text), class: 'form-control btn btn-default' %>
 <% end %>

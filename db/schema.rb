@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20180525110750) do
     t.string "username"
     t.string "authentication_token", limit: 30
     t.string "description"
-    t.string "image_src"
+    t.string "image_src", default: "https://academist-app-production.s3.amazonaws.com/uploads/user/profile_image/3203/default_user_icon.png"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

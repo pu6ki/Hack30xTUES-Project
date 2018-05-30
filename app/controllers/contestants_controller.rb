@@ -3,6 +3,7 @@ class ContestantsController < ApplicationController
 
   before_action :set_contestant,                 only: [:edit, :update, :show, :destory]
   before_action :check_access_for_unauthorized,  only: [:create, :new]
+  before_action :validate_contestant_user,       only: [:edit, :update]
 
   def index
     @contestants = Contestant.all
