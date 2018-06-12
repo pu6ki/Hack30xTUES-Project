@@ -23,7 +23,7 @@ class Contestant < ApplicationRecord
 
   def contests_participated
     Contest.select do |contest|
-      submission_by_contest(contest)
+      submissions_by_contest(contest)
     end
   end
 
